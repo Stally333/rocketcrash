@@ -1,0 +1,46 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.header {
+  display: grid;
+  grid-template-columns: 2fr 0.5fr 1fr 1fr;
+  padding: 0.75rem 1rem;
+  background: rgba(0, 0, 0, 0.3);
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  font-size: 0.875rem;
+  color: #888;
+  font-weight: 500;
+}
+
+.betsList {
+  flex: 1;
+  overflow-y: auto;
+}
+
+.betItem {
+  display: grid;
+  grid-template-columns: 2fr 0.5fr 1fr 1fr;
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.username {
+  color: #12c2e9;
+  font-weight: 500;
+}
+
+.cashout {
+  color: #c471ed;
+}
+
+.amount {
+  color: #fff;
+}
+
+.profit {
+  color: #4CAF50;
+} 

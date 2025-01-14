@@ -1,0 +1,20 @@
+:root {
+  --primary-gradient: linear-gradient(90deg, #12c2e9, #c471ed, #f64f59);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: #0a0a0a;
+  color: #ffffff;
+  min-height: 100vh;
+}
+
+::selection {
+  background: #c471ed;
+  color: white;
+} 

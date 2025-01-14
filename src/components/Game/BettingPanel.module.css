@@ -1,0 +1,61 @@
+.container {
+  background: #1a1a1a;
+  border-radius: 8px;
+  padding: 1.5rem;
+  display: flex;
+  gap: 1.5rem;
+}
+
+.inputGroup {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.inputGroup label {
+  font-size: 0.875rem;
+  color: #888;
+  font-weight: 500;
+}
+
+.inputWrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.input {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+  padding: 0.75rem 1rem;
+  color: white;
+  font-size: 1rem;
+}
+
+.currency, .multiplier {
+  position: absolute;
+  right: 1rem;
+  color: #888;
+  font-size: 0.875rem;
+  pointer-events: none;
+}
+
+.betButton {
+  align-self: flex-end;
+  background: linear-gradient(90deg, #12c2e9, #c471ed, #f64f59);
+  border: none;
+  border-radius: 4px;
+  padding: 0.75rem 2rem;
+  color: white;
+  font-weight: 500;
+  cursor: pointer;
+  transition: opacity 0.2s;
+  height: 42px;
+}
+
+.betButton:hover {
+  opacity: 0.9;
+} 

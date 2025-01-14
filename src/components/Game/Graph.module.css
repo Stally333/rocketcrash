@@ -1,0 +1,163 @@
+.viewport {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  overflow: hidden;
+  background: #1a1a1a;
+  border-radius: 4px;
+}
+
+/* Make grid lines cover the full container */
+.gridLines {
+  position: absolute;
+  inset: 0;
+  background-image: 
+    linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  background-size: 40px 40px; /* Increased grid size */
+  pointer-events: none;
+  z-index: 1;
+}
+
+.canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+}
+
+/* Crash line styling */
+.crashLine {
+  filter: drop-shadow(0 0 8px rgba(18, 194, 233, 0.4));
+  z-index: 2;
+}
+
+/* UI Overlay layer */
+.overlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  z-index: 3;
+}
+
+/* Game status overlay - centered multiplier */
+.gameStatus {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 4rem;
+  font-weight: 700;
+  font-family: 'JetBrains Mono', monospace;
+  color: #12c2e9;
+  text-shadow: 0 0 20px rgba(18, 194, 233, 0.3);
+  z-index: 4;
+}
+
+/* Bottom info bar */
+.infoBar {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-between;
+  padding: 0.75rem;
+  background: linear-gradient(transparent, rgba(0, 0, 0, 0.3));
+  z-index: 3;
+}
+
+.fairnessHash {
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 0.75rem;
+  font-family: 'JetBrains Mono', monospace;
+  background: rgba(0, 0, 0, 0.3);
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  align-self: flex-start;
+}
+
+.markers {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 1rem;
+}
+
+.timeMarker, .multiplierMarker {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.875rem;
+  font-family: 'JetBrains Mono', monospace;
+  background: rgba(0, 0, 0, 0.3);
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+}
+
+/* Scale markers */
+.scaleMarkers {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 1rem 0;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.scaleMarker {
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 0.75rem;
+  font-family: 'JetBrains Mono', monospace;
+  padding: 0.125rem 0.25rem;
+}
+
+/* Animation for crash effect */
+@keyframes crash {
+  0% { transform: scale(1); filter: brightness(1); }
+  50% { transform: scale(1.5); filter: brightness(1.5); }
+  100% { transform: scale(1); filter: brightness(1); }
+}
+
+.crashed .canvas {
+  animation: crash 0.3s ease-out;
+}
+
+/* Hover effects for interactive elements */
+.hoverInfo {
+  position: absolute;
+  background: rgba(0, 0, 0, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+  padding: 0.5rem;
+  color: white;
+  font-size: 0.75rem;
+  pointer-events: none;
+  z-index: 4;
+  transform: translate(-50%, -100%);
+  margin-top: -8px;
+}
+
+@keyframes rocketTrail {
+  0% { opacity: 0.8; }
+  100% { opacity: 0; }
+}
+
+.rocketTrail {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(18, 194, 233, 0.4) 0%, transparent 70%);
+  animation: rocketTrail 0.5s ease-out forwards;
+} 

@@ -1,0 +1,17 @@
+.container {
+  display: flex;
+  gap: 1rem;
+  padding: 1rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  overflow-x: auto;
+}
+
+.gameResult {
+  font-size: 0.875rem;
+  font-weight: 500;
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.05);
+  min-width: 60px;
+  text-align: center;
+} 
