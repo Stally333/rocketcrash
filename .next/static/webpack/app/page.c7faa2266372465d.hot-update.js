@@ -1,0 +1,21 @@
+/*
+ * ATTENTION: An "eval-source-map" devtool has been used.
+ * This devtool is neither made for production nor for readable output files.
+ * It uses "eval()" calls to create a separate source file with attached SourceMaps in the browser devtools.
+ * If you are trying to read the output file, select a different devtool (https://webpack.js.org/configuration/devtool/)
+ * or disable the default devtool with "devtool: false".
+ * If you are looking for production-ready output files, see mode: "production" (https://webpack.js.org/configuration/mode/).
+ */
+self["webpackHotUpdate_N_E"]("app/page",{
+
+/***/ "(app-pages-browser)/./src/components/Game/GameControls.module.css":
+/*!*****************************************************!*\
+  !*** ./src/components/Game/GameControls.module.css ***!
+  \*****************************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+eval(__webpack_require__.ts("// extracted by mini-css-extract-plugin\nmodule.exports = {\"container\":\"GameControls_container__yWDv8\",\"inputGroup\":\"GameControls_inputGroup__xzrhg\",\"inputWrapper\":\"GameControls_inputWrapper__iLwnV\",\"input\":\"GameControls_input__JXkVv\",\"inputControls\":\"GameControls_inputControls__832r9\",\"halfButton\":\"GameControls_halfButton__Gnnm0\",\"doubleButton\":\"GameControls_doubleButton__oU5tW\",\"currency\":\"GameControls_currency__tP7GB\",\"multiplier\":\"GameControls_multiplier__n02q9\",\"betButton\":\"GameControls_betButton__QzsVJ\",\"cashoutButton\":\"GameControls_cashoutButton__iqSr9\",\"pulse\":\"GameControls_pulse__YY3U2\"};\n    if(true) {\n      // 1736902421045\n      var cssReload = __webpack_require__(/*! ../../node_modules/next/dist/compiled/mini-css-extract-plugin/hmr/hotModuleReplacement.js */ \"(app-pages-browser)/../../node_modules/next/dist/compiled/mini-css-extract-plugin/hmr/hotModuleReplacement.js\")(module.id, {\"publicPath\":\"/_next/\",\"esModule\":false,\"locals\":true});\n      module.hot.dispose(cssReload);\n      \n    }\n  \nmodule.exports.__checksum = \"7bf924924c7f\"\n//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiKGFwcC1wYWdlcy1icm93c2VyKS8uL3NyYy9jb21wb25lbnRzL0dhbWUvR2FtZUNvbnRyb2xzLm1vZHVsZS5jc3MiLCJtYXBwaW5ncyI6IkFBQUE7QUFDQSxrQkFBa0I7QUFDbEIsT0FBTyxJQUFVO0FBQ2pCO0FBQ0Esc0JBQXNCLG1CQUFPLENBQUMsZ05BQTBHLGNBQWMsc0RBQXNEO0FBQzVNLE1BQU0sVUFBVTtBQUNoQjtBQUNBO0FBQ0E7QUFDQSx5QkFBeUIiLCJzb3VyY2VzIjpbIi9Vc2Vycy9zdGFsbHktbGFwdG9wL0Rlc2t0b3Avcm9ja2V0Y3Jhc2gvc3JjL2NvbXBvbmVudHMvR2FtZS9HYW1lQ29udHJvbHMubW9kdWxlLmNzcyJdLCJzb3VyY2VzQ29udGVudCI6WyIvLyBleHRyYWN0ZWQgYnkgbWluaS1jc3MtZXh0cmFjdC1wbHVnaW5cbm1vZHVsZS5leHBvcnRzID0ge1wiY29udGFpbmVyXCI6XCJHYW1lQ29udHJvbHNfY29udGFpbmVyX195V0R2OFwiLFwiaW5wdXRHcm91cFwiOlwiR2FtZUNvbnRyb2xzX2lucHV0R3JvdXBfX3h6cmhnXCIsXCJpbnB1dFdyYXBwZXJcIjpcIkdhbWVDb250cm9sc19pbnB1dFdyYXBwZXJfX2lMd25WXCIsXCJpbnB1dFwiOlwiR2FtZUNvbnRyb2xzX2lucHV0X19KWGtWdlwiLFwiaW5wdXRDb250cm9sc1wiOlwiR2FtZUNvbnRyb2xzX2lucHV0Q29udHJvbHNfXzgzMnI5XCIsXCJoYWxmQnV0dG9uXCI6XCJHYW1lQ29udHJvbHNfaGFsZkJ1dHRvbl9fR25ubTBcIixcImRvdWJsZUJ1dHRvblwiOlwiR2FtZUNvbnRyb2xzX2RvdWJsZUJ1dHRvbl9fb1U1dFdcIixcImN1cnJlbmN5XCI6XCJHYW1lQ29udHJvbHNfY3VycmVuY3lfX3RQN0dCXCIsXCJtdWx0aXBsaWVyXCI6XCJHYW1lQ29udHJvbHNfbXVsdGlwbGllcl9fbjAycTlcIixcImJldEJ1dHRvblwiOlwiR2FtZUNvbnRyb2xzX2JldEJ1dHRvbl9fUXpzVkpcIixcImNhc2hvdXRCdXR0b25cIjpcIkdhbWVDb250cm9sc19jYXNob3V0QnV0dG9uX19pcVNyOVwiLFwicHVsc2VcIjpcIkdhbWVDb250cm9sc19wdWxzZV9fWVkzVTJcIn07XG4gICAgaWYobW9kdWxlLmhvdCkge1xuICAgICAgLy8gMTczNjkwMjQyMTA0NVxuICAgICAgdmFyIGNzc1JlbG9hZCA9IHJlcXVpcmUoXCIvVXNlcnMvc3RhbGx5LWxhcHRvcC9ub2RlX21vZHVsZXMvbmV4dC9kaXN0L2NvbXBpbGVkL21pbmktY3NzLWV4dHJhY3QtcGx1Z2luL2htci9ob3RNb2R1bGVSZXBsYWNlbWVudC5qc1wiKShtb2R1bGUuaWQsIHtcInB1YmxpY1BhdGhcIjpcIi9fbmV4dC9cIixcImVzTW9kdWxlXCI6ZmFsc2UsXCJsb2NhbHNcIjp0cnVlfSk7XG4gICAgICBtb2R1bGUuaG90LmRpc3Bvc2UoY3NzUmVsb2FkKTtcbiAgICAgIFxuICAgIH1cbiAgXG5tb2R1bGUuZXhwb3J0cy5fX2NoZWNrc3VtID0gXCI3YmY5MjQ5MjRjN2ZcIlxuIl0sIm5hbWVzIjpbXSwiaWdub3JlTGlzdCI6W10sInNvdXJjZVJvb3QiOiIifQ==\n//# sourceURL=webpack-internal:///(app-pages-browser)/./src/components/Game/GameControls.module.css\n"));
+
+/***/ })
+
+});

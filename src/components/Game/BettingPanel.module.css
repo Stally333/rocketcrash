@@ -1,61 +1,92 @@
 .container {
-  background: #1a1a1a;
-  border-radius: 8px;
-  padding: 1.5rem;
+  flex: 0.3;
+  background: rgba(0, 0, 0, 0.4);
+  border-radius: 6px;
+  border: 1px solid rgba(18, 194, 233, 0.2);
+  box-shadow: 
+    inset 0 0 30px rgba(18, 194, 233, 0.07),
+    0 4px 24px -1px rgba(18, 194, 233, 0.15);
+  backdrop-filter: blur(5px);
+  padding: var(--spacing-md);
   display: flex;
-  gap: 1.5rem;
+  flex-direction: column;
+  gap: var(--spacing-md);
 }
 
-.inputGroup {
+.betSection {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+.betRow {
+  display: flex;
+  gap: var(--spacing-md);
+}
+
+.betInput {
   flex: 1;
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  gap: 4px;
 }
 
-.inputGroup label {
-  font-size: 0.875rem;
-  color: #888;
-  font-weight: 500;
+.betInput label {
+  font-size: 0.75rem;
+  color: #666;
+  text-transform: uppercase;
 }
 
-.inputWrapper {
-  position: relative;
-  display: flex;
-  align-items: center;
-}
-
-.input {
-  width: 100%;
-  background: rgba(255, 255, 255, 0.05);
+.betInput input {
+  background: rgba(0, 0, 0, 0.3);
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 4px;
-  padding: 0.75rem 1rem;
+  height: 32px;
+  padding: 0 12px;
   color: white;
-  font-size: 1rem;
-}
-
-.currency, .multiplier {
-  position: absolute;
-  right: 1rem;
-  color: #888;
   font-size: 0.875rem;
-  pointer-events: none;
+  font-family: 'JetBrains Mono', monospace;
 }
 
-.betButton {
-  align-self: flex-end;
-  background: linear-gradient(90deg, #12c2e9, #c471ed, #f64f59);
-  border: none;
+.placeBetButton {
+  background: linear-gradient(
+    to right bottom,
+    rgba(18, 194, 233, 0.15),
+    rgba(18, 194, 233, 0.05)
+  );
+  border: 1px solid rgba(18, 194, 233, 0.2);
   border-radius: 4px;
-  padding: 0.75rem 2rem;
+  padding: 12px;
   color: white;
   font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  backdrop-filter: blur(5px);
+  transition: all 0.2s;
   cursor: pointer;
-  transition: opacity 0.2s;
-  height: 42px;
 }
 
-.betButton:hover {
-  opacity: 0.9;
+.placeBetButton:hover {
+  background: linear-gradient(
+    to right bottom,
+    rgba(18, 194, 233, 0.25),
+    rgba(18, 194, 233, 0.15)
+  );
+}
+
+.cashoutButton {
+  background: linear-gradient(
+    to right bottom,
+    rgba(76, 175, 80, 0.15),
+    rgba(76, 175, 80, 0.05)
+  );
+  border-color: rgba(76, 175, 80, 0.2);
+}
+
+.cashoutButton:hover {
+  background: linear-gradient(
+    to right bottom,
+    rgba(76, 175, 80, 0.25),
+    rgba(76, 175, 80, 0.15)
+  );
 } 

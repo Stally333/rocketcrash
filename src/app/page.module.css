@@ -1,230 +1,356 @@
 .main {
-  height: calc(100vh - 57px);
-  padding: 1rem;
-  overflow: hidden;
-  background: #0a0a0a;
-}
-
-.gameContainer {
-  display: grid;
-  grid-template-columns: 1fr 437.5px;
-  gap: 1rem;
-  height: 100%;
-  max-width: 1400px;
+  height: calc(100vh - var(--header-height));
+  display: flex;
+  padding: var(--spacing-md);
+  max-width: var(--container-max-width);
   margin: 0 auto;
+  overflow: hidden;
+  box-sizing: border-box;
 }
 
-/* Left section */
 .gameSection {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
   height: 100%;
+  width: 100%;
+  overflow: hidden;
+  box-sizing: border-box;
+  gap: var(--spacing-md);
 }
 
-/* Game area - Adjust to make room for larger chat */
+/* Game area takes 44% */
 .gameArea {
+  height: 44%;
   display: flex;
   flex-direction: column;
-  gap: 0.75rem;
-  height: 55%; /* Reduced from 65% to give more space to chat */
-}
-
-/* Graph container */
-.gameGraph {
-  background: #1a1a1a;
-  border-radius: 6px;
-  padding: 0.75rem;
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  min-height: 400px; /* Set minimum height */
-}
-
-/* Graph element */
-.graph {
-  flex: 1;
   min-height: 0;
-  position: relative;
-  background: #1a1a1a;
-  border-radius: 6px;
-  overflow: hidden;
+  flex-shrink: 0;
+  padding: var(--spacing-md);
 }
 
-/* Chat section - Increased height */
+/* Bottom section container */
+.bottomSection {
+  height: 43%;
+  display: flex;
+  gap: var(--spacing-md);
+  padding: 0 var(--spacing-md);
+}
+
+/* Chat section takes 80% of the space */
 .chatSection {
-  background: #1a1a1a;
+  width: 80%;
   border-radius: 6px;
-  height: 43%; /* Increased from 33% to make chat box 50% larger */
-  display: flex;
-  flex-direction: column;
-}
-
-/* Right sidebar - Remains the same height as graph */
-.sidebar {
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
-  height: 100%;
-}
-
-/* Controls section */
-.controls {
-  background: #1a1a1a;
-  border-radius: 6px;
-  height: 180px;
-  display: flex;
-  align-items: center;
-  padding: 0;
   overflow: hidden;
-}
-
-/* Bets section */
-.betsSection {
-  background: #1a1a1a;
-  border-radius: 6px;
-  flex: 1;
+  min-height: 0;
   display: flex;
   flex-direction: column;
 }
 
-.multiplier {
+/* Betting container takes middle */
+.bettingContainer {
+  flex: 0.3;
+  background: rgba(0, 0, 0, 0.4);
+  border-radius: 6px;
+  border: 1px solid rgba(18, 194, 233, 0.2);
+  box-shadow: 
+    inset 0 0 30px rgba(18, 194, 233, 0.07),
+    0 4px 24px -1px rgba(18, 194, 233, 0.15);
+  backdrop-filter: blur(5px);
+  padding: var(--spacing-md);
   display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 80px;
+  flex-direction: column;
+  gap: var(--spacing-sm);
 }
 
-.multiplierValue {
-  font-size: 3.5rem;
-  font-weight: 700;
-}
-
-.previousRounds {
+.betSection {
   display: flex;
-  gap: 1rem;
-  padding-top: 1rem;
-  color: #888;
-  font-size: 0.875rem;
+  flex-direction: column;
+  gap: var(--spacing-md);
 }
 
-.betControls {
+.betRow {
   display: flex;
-  gap: 0.5rem;
-  flex: 2;
+  gap: var(--spacing-md);
 }
 
-.inputWrapper {
-  width: 100%;
-  height: 32px;
-  display: flex;
-  align-items: center;
-}
-
-.betInput, .cashoutInput {
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 4px;
-  padding: 0.25rem 0.5rem;
-  color: white;
-  width: 100%;
-  height: 32px;
-  font-size: 0.875rem;
-}
-
-.betButton {
-  background: linear-gradient(90deg, #12c2e9, #c471ed, #f64f59);
-  border: none;
-  border-radius: 4px;
-  padding: 0 1rem;
-  height: 32px;
-  color: white;
-  font-weight: 500;
-  cursor: pointer;
-  transition: opacity 0.2s;
-}
-
-.betButton:hover {
-  opacity: 0.9;
-}
-
-.autoCashout {
+.betInput {
   flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
 }
 
-.betsHeader {
-  display: grid;
-  grid-template-columns: 2fr 0.5fr 1fr 1fr;
-  padding: 0.75rem 1rem;
+.betInput label {
+  font-size: 0.75rem;
+  color: #666;
+  text-transform: uppercase;
+}
+
+.betInput input {
   background: rgba(0, 0, 0, 0.3);
-  border-top-left-radius: 8px;
-  border-top-right-radius: 8px;
-  font-size: 0.875rem;
-  color: #888;
-  font-weight: 500;
-}
-
-.betsList {
-  flex: 1;
-  overflow-y: auto;
-}
-
-.betItem {
-  display: grid;
-  grid-template-columns: 2fr 0.5fr 1fr 1fr;
-  padding: 0.5rem 1rem;
-  font-size: 0.875rem;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-}
-
-.username {
-  color: #f64f59;
-}
-
-.chatMessages {
-  flex: 1;
-  overflow-y: auto;
-  padding: 1rem;
-}
-
-.chatInput {
-  padding: 1rem;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.chatInput input {
-  width: 100%;
-  background: rgba(255, 255, 255, 0.05);
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 4px;
-  padding: 0.5rem;
-  color: #888;
+  height: 32px;
+  padding: 0 12px;
+  color: white;
+  font-size: 0.875rem;
+  font-family: 'JetBrains Mono', monospace;
 }
 
-@media (max-width: 1400px) {
-  .gameContainer {
-    grid-template-columns: minmax(800px, 2fr) 437.5px;
-  }
+.placeBetButton {
+  background: linear-gradient(
+    to right bottom,
+    rgba(18, 194, 233, 0.15),
+    rgba(18, 194, 233, 0.05)
+  );
+  border: 1px solid rgba(18, 194, 233, 0.2);
+  border-radius: 4px;
+  padding: 0;
+  color: white;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  backdrop-filter: blur(5px);
+  transition: all 0.2s;
+  cursor: pointer;
+  margin: var(--spacing-xs) 0;
+  height: 36px;
 }
 
-@media (max-width: 1024px) {
-  .gameContainer {
-    grid-template-columns: 1fr;
+.placeBetButton:hover {
+  background: linear-gradient(
+    to right bottom,
+    rgba(18, 194, 233, 0.25),
+    rgba(18, 194, 233, 0.15)
+  );
+}
+
+.fairnessSection {
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  margin-top: var(--spacing-sm);
+  padding-top: var(--spacing-sm);
+}
+
+.fairnessHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--spacing-xs);
+  color: #666;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.helpIcon {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: rgba(18, 194, 233, 0.1);
+  border: 1px solid rgba(18, 194, 233, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  color: var(--primary);
+  cursor: help;
+}
+
+.fairnessInputs {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+}
+
+.fairnessInput {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.fairnessInput label {
+  font-size: 0.75rem;
+  color: #666;
+  text-transform: uppercase;
+}
+
+.fairnessInput input {
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+  height: 28px;
+  padding: 0 10px;
+  color: white;
+  font-size: 0.75rem;
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.fairnessInput input[readonly] {
+  color: #666;
+  cursor: default;
+}
+
+.gameContainer {
+  flex: 0.7; /* Takes up 70% of the space */
+  position: relative;
+  background: rgba(0, 0, 0, 0.4);
+  border-radius: 6px;
+  overflow: hidden;
+  min-height: 0;
+  border: 1px solid rgba(18, 194, 233, 0.2);
+  box-shadow: 
+    inset 0 0 30px rgba(18, 194, 233, 0.07),
+    0 4px 24px -1px rgba(18, 194, 233, 0.15);
+  backdrop-filter: blur(5px);
+}
+
+/* Update the grid lines to be more visible against new background */
+.gridLines {
+  position: absolute;
+  inset: 0;
+  background-image: 
+    linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+  background-size: 40px 40px;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Controls/Bet amount takes 13% */
+.controlsSection {
+  height: 13%;
+  min-height: 34px;
+  display: flex;
+  background: rgba(0, 0, 0, 0.4);
+  border-radius: 6px;
+  padding: var(--spacing-md);
+  flex-shrink: 0;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1200px) {
+  .main {
+    height: auto;
+    min-height: calc(100vh - var(--header-height));
   }
   
   .gameArea {
-    height: auto;
-  }
-
-  .gameGraph {
-    height: 250px;
+    height: 44vh;
   }
   
-  .controls {
-    min-height: 60px;
+  .controlsSection {
+    height: 13vh;
   }
   
   .chatSection {
-    height: 400px;
+    height: 43vh;
   }
+} 
+
+/* Add these new styles */
+.rightSection {
+  width: 400px;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+} 
+
+.leftSection {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+} 
+
+/* Update Leaderboard styles in Leaderboard.module.css */
+.container {
+  width: 300px;
+  background: rgba(0, 0, 0, 0.4);
+  border-radius: 6px;
+  border: 1px solid rgba(18, 194, 233, 0.2);
+  box-shadow: 
+    inset 0 0 30px rgba(18, 194, 233, 0.07),
+    0 4px 24px -1px rgba(18, 194, 233, 0.15);
+  backdrop-filter: blur(5px);
+  padding: var(--spacing-md);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+} 
+
+.gameWrapper {
+  display: flex;
+  gap: var(--spacing-md);
+  flex: 1;
+  min-height: 0;
+} 
+
+/* Hash verifier styles */
+.hashVerifier {
+  background: rgba(0, 0, 0, 0.4);
+  border-radius: 6px;
+  padding: var(--spacing-md);
+  border: 1px solid rgba(18, 194, 233, 0.2);
+}
+
+.hashHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--spacing-sm);
+}
+
+.hashHeader h3 {
+  font-size: 0.75rem;
+  color: #666;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.helpIcon {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: rgba(18, 194, 233, 0.1);
+  border: 1px solid rgba(18, 194, 233, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  color: var(--primary);
+  cursor: help;
+}
+
+.hashInputs {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+}
+
+.hashInput {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.hashInput label {
+  font-size: 0.75rem;
+  color: #666;
+  text-transform: uppercase;
+}
+
+.hashInput input {
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+  height: 32px;
+  padding: 0 12px;
+  color: white;
+  font-size: 0.75rem;
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.hashInput input[readonly] {
+  color: #666;
+  cursor: default;
 } 

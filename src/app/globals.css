@@ -1,20 +1,42 @@
 :root {
-  --primary-gradient: linear-gradient(90deg, #12c2e9, #c471ed, #f64f59);
+  --background: #0a0a0a;
+  --text: #ffffff;
+  --primary: #12c2e9;
+  --secondary: #c471ed;
+  --accent: #f64f59;
+  
+  /* Spacing system */
+  --spacing-xs: 0.25rem;
+  --spacing-sm: 0.5rem;
+  --spacing-md: 1rem;
+  --spacing-lg: 1.5rem;
+  --spacing-xl: 2rem;
+  
+  /* Layout */
+  --header-height: 56px;
+  --container-max-width: 1440px;
+  --side-panel-width: 320px;
 }
 
-* {
+html, body {
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
+  height: 100%;
+  overflow: hidden;
 }
 
 body {
-  background: #0a0a0a;
-  color: #ffffff;
+  background: var(--background);
+  color: var(--text);
   min-height: 100vh;
+  /* Remove these if causing issues */
+  --safe-area-inset-top: env(safe-area-inset-top, 0px);
+  --safe-area-inset-bottom: env(safe-area-inset-bottom, 0px);
 }
 
-::selection {
-  background: #c471ed;
-  color: white;
-} 
+#__next {
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* Add any additional global styles */ 

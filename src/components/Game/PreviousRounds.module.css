@@ -1,0 +1,29 @@
+.container {
+  display: flex;
+  gap: 4px;
+  padding: 8px;
+  border-radius: 4px;
+}
+
+.rounds {
+  display: flex;
+  gap: 4px;
+}
+
+.round {
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 500;
+}
+
+.high {
+  background: rgba(18, 194, 233, 0.2);
+  color: #12c2e9;
+}
+
+.low {
+  background: rgba(246, 79, 89, 0.2);
+  color: #f64f59;
+} 

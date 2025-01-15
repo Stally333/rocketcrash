@@ -11,217 +11,163 @@ const simpleHash = (str: string): string => {
 }
 
 export class CrashGame {
-  private state: GameState
+  private state: GameState = {
+    phase: 'waiting',
+    multiplier: 1.00,
+    elapsed: 0,
+    startTime: null,
+    crashPoint: 1.00,
+    hash: '',
+    seed: '',
+    previousGames: []
+  }
+
   private readonly HOUSE_EDGE = 0.99 // 1% house edge
   private readonly GAME_UPDATE_RATE = 60 // Updates per second
   private updateInterval: number | null = null
   private lastUpdateTime: number = 0
-
-  private callbacks: {
-    onUpdate?: (state: GameState) => void
-    onCrash?: (crashPoint: number) => void
-    onStarting?: () => void
-    onGameStart?: () => void
-  } = {}
-
-  // Add proper timeout handling
-  private startTimeout: number | null = null
-  private crashTimeout: number | null = null
-  private animationFrame: number | null = null
+  private callbacks: GameCallbacks = {}
 
   constructor() {
-    this.state = this.getInitialState()
     this.generateNextCrashPoint()
-  }
-
-  private getInitialState(): GameState {
-    return {
-      phase: 'waiting',
-      multiplier: 1.00,
-      crashPoint: 1.00,
-      startTime: null,
-      elapsed: 0,
-      hash: '',
-      seed: '',
-      previousGames: []
-    }
-  }
-
-  // Provably fair crash point generation
-  private generateNextCrashPoint(): CrashPoint {
-    // For demo purposes - in production this would come from server
-    const serverSeed = Math.random().toString(36).substring(2)
-    const clientSeed = Math.random().toString(36).substring(2)
-    const combinedSeed = `${serverSeed}-${clientSeed}`
-    const hash = simpleHash(combinedSeed)
-    
-    // Use the first 8 characters of hash for randomness
-    const seedInt = parseInt(hash.slice(0, 8), 16)
-    const max = 0xffffffff // 32-bit max
-    
-    // Generate crash point between 1 and 10 for demo
-    const rawPoint = (seedInt % 900) / 100 + 1 // 1.00 to 10.00
-    const crashPoint = Math.max(1.00, rawPoint * this.HOUSE_EDGE)
-
-    return {
-      value: crashPoint,
-      hash: hash,
-      seed: combinedSeed
-    }
-  }
-
-  private calculateMultiplier(elapsed: number): number {
-    // Exponential growth function
-    // 1.0696^t where t is seconds elapsed
-    return Math.pow(1.0696, elapsed / 1000)
-  }
-
-  private update = () => {
-    if (this.state.phase !== 'in-progress' || !this.state.startTime) return
-
-    const now = Date.now()
-    const deltaTime = now - this.lastUpdateTime
-    this.lastUpdateTime = now
-
-    // Ensure we're not updating too frequently
-    if (deltaTime < 1000 / this.GAME_UPDATE_RATE) {
-      this.animationFrame = requestAnimationFrame(this.update)
-      return
-    }
-
-    this.state.elapsed = now - this.state.startTime
-    this.state.multiplier = this.calculateMultiplier(this.state.elapsed)
-
-    // Check for crash
-    if (this.state.multiplier >= this.state.crashPoint) {
-      this.crash()
-      return
-    }
-
-    this.callbacks.onUpdate?.(this.state)
-    this.animationFrame = requestAnimationFrame(this.update)
   }
 
   public startGame() {
     if (this.state.phase !== 'waiting') return
 
-    // Generate next crash point before starting
-    const nextCrash = this.generateNextCrashPoint()
-    this.state.crashPoint = nextCrash.value
-    this.state.hash = nextCrash.hash
-    this.state.seed = nextCrash.seed
-
     this.state.phase = 'starting'
     this.callbacks.onStarting?.()
-    this.callbacks.onUpdate?.(this.state)
 
-    // Start the game after a short delay
-    this.startTimeout = window.setTimeout(() => {
+    // 3 second countdown
+    setTimeout(() => {
       this.state.phase = 'in-progress'
       this.state.startTime = Date.now()
-      this.lastUpdateTime = Date.now()
+      this.lastUpdateTime = this.state.startTime
+      this.startGameLoop()
       this.callbacks.onGameStart?.()
-      this.callbacks.onUpdate?.(this.state)
+    }, 3000)
+  }
+
+  private startGameLoop() {
+    const updateGame = () => {
+      const now = Date.now()
+      const delta = now - this.lastUpdateTime
+      this.lastUpdateTime = now
+
+      if (this.state.startTime === null) return
       
-      // Start the game loop
-      this.update()
-    }, 3000) // 3 second countdown
+      this.state.elapsed = (now - this.state.startTime) / 1000
+      this.state.multiplier = this.calculateMultiplier(this.state.elapsed)
+
+      // Check if crashed
+      if (this.state.multiplier >= this.state.crashPoint) {
+        this.crash()
+        return
+      }
+
+      this.callbacks.onUpdate?.(this.state)
+      this.updateInterval = requestAnimationFrame(updateGame)
+    }
+
+    this.updateInterval = requestAnimationFrame(updateGame)
   }
 
   private crash() {
-    // Stop updates
-    if (this.animationFrame) {
-      cancelAnimationFrame(this.animationFrame)
-      this.animationFrame = null
-    }
-
     this.state.phase = 'crashed'
-    this.callbacks.onCrash?.(this.state.crashPoint)
+    this.state.multiplier = this.state.crashPoint
     
-    // Store game history
-    this.state.previousGames.unshift({
-      crashPoint: this.state.crashPoint,
-      hash: this.state.hash,
-      seed: this.state.seed
-    })
-    
-    // Keep last 50 games
-    if (this.state.previousGames.length > 50) {
-      this.state.previousGames.pop()
+    if (this.updateInterval) {
+      cancelAnimationFrame(this.updateInterval)
+      this.updateInterval = null
     }
 
-    // Reset for next round after delay
-    this.crashTimeout = window.setTimeout(() => {
-      this.state = {
-        ...this.getInitialState(),
-        previousGames: this.state.previousGames
-      }
+    this.callbacks.onCrash?.(this.state.crashPoint)
+    this.addToGameHistory()
+    this.generateNextCrashPoint()
+
+    // Start new game after 2 seconds
+    setTimeout(() => {
+      this.state.phase = 'waiting'
+      this.state.multiplier = 1.00
+      this.state.elapsed = 0
+      this.state.startTime = null
       this.callbacks.onUpdate?.(this.state)
     }, 2000)
   }
 
-  public verifyGameResult(hash: string, seed: string): number {
-    const verificationHash = simpleHash(seed)
-    if (verificationHash !== hash) {
-      throw new Error('Invalid game result')
+  private calculateMultiplier(elapsed: number): number {
+    // Growth function: 1.0239^t
+    return Math.pow(1.0239, elapsed * 100) * this.HOUSE_EDGE
+  }
+
+  private generateNextCrashPoint(): void {
+    // For demo - in production this would use server-provided seed
+    const serverSeed = Math.random().toString(36).substring(2)
+    const clientSeed = Math.random().toString(36).substring(2)
+    const hash = this.generateHash(`${serverSeed}-${clientSeed}`)
+    
+    // Use first 52 bits of hash for randomness
+    const seed = parseInt(hash.slice(0, 13), 16)
+    
+    // Generate crash point between 1 and ~20
+    const crashPoint = Math.max(1.00, (100 / (seed % 100 + 1)) * this.HOUSE_EDGE)
+    
+    this.state.crashPoint = crashPoint
+    this.state.hash = hash
+    this.state.seed = `${serverSeed}-${clientSeed}`
+  }
+
+  private generateHash(input: string): string {
+    // Simple hash function for demo
+    // In production use proper crypto
+    let hash = 0
+    for (let i = 0; i < input.length; i++) {
+      const char = input.charCodeAt(i)
+      hash = ((hash << 5) - hash) + char
+      hash = hash & hash
+    }
+    return Math.abs(hash).toString(16)
+  }
+
+  private addToGameHistory() {
+    const gameResult = {
+      crashPoint: this.state.crashPoint,
+      hash: this.state.hash,
+      seed: this.state.seed
     }
     
-    const seedInt = parseInt(hash.slice(0, 8), 16)
-    const max = 0xffffffff
-    const rawPoint = (seedInt % 900) / 100 + 1
-    return Math.max(1.00, rawPoint * this.HOUSE_EDGE)
+    this.state.previousGames = [gameResult, ...this.state.previousGames].slice(0, 50)
   }
 
-  public getGameStats() {
-    const games = this.state.previousGames
-    return {
-      totalGames: games.length,
-      averageMultiplier: games.reduce((acc, game) => acc + game.crashPoint, 0) / games.length,
-      maxMultiplier: Math.max(...games.map(game => game.crashPoint)),
-      minMultiplier: Math.min(...games.map(game => game.crashPoint)),
-      below2x: games.filter(game => game.crashPoint < 2).length,
-      above10x: games.filter(game => game.crashPoint > 10).length
-    }
-  }
-
-  public subscribe(callbacks: {
-    onUpdate?: (state: GameState) => void
-    onCrash?: (crashPoint: number) => void
-    onStarting?: () => void
-    onGameStart?: () => void
-  }) {
+  public setCallbacks(callbacks: GameCallbacks) {
     this.callbacks = callbacks
   }
 
   public getState(): GameState {
     return { ...this.state }
   }
+}
 
-  public cleanup() {
-    if (this.updateInterval) {
-      clearInterval(this.updateInterval)
-      this.updateInterval = null
-    }
-    
-    // Cancel any pending animations
-    if (this.animationFrame) {
-      cancelAnimationFrame(this.animationFrame)
-      this.animationFrame = null
-    }
+interface GameState {
+  phase: 'waiting' | 'starting' | 'in-progress' | 'crashed'
+  multiplier: number
+  elapsed: number
+  startTime: number | null
+  crashPoint: number
+  hash: string
+  seed: string
+  previousGames: GameHistory[]
+}
 
-    // Clear any pending timeouts
-    if (this.startTimeout) {
-      clearTimeout(this.startTimeout)
-      this.startTimeout = null
-    }
+interface GameHistory {
+  crashPoint: number
+  hash: string
+  seed: string
+}
 
-    if (this.crashTimeout) {
-      clearTimeout(this.crashTimeout)
-      this.crashTimeout = null
-    }
-
-    // Reset state
-    this.state = this.getInitialState()
-    this.callbacks = {}
-  }
+interface GameCallbacks {
+  onUpdate?: (state: GameState) => void
+  onCrash?: (crashPoint: number) => void
+  onStarting?: () => void
+  onGameStart?: () => void
 } 

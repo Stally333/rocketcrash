@@ -2,633 +2,389 @@
   !*** css ../../node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[5].use[2]!../../node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[5].use[3]!./src/app/page.module.css ***!
   \***************************************************************************************************************************************************************************************************************************************************************************/
 .page_main__GlU4n {
-  height: calc(100vh - 57px);
-  padding: 1rem;
-  overflow: hidden;
-  background: #0a0a0a;
-}
-
-.page_gameContainer__gZ0MP {
-  display: grid;
-  grid-template-columns: 1fr 437.5px;
-  grid-gap: 1rem;
-  gap: 1rem;
-  height: 100%;
-  max-width: 1400px;
+  height: calc(100vh - var(--header-height));
+  display: flex;
+  padding: var(--spacing-md);
+  max-width: var(--container-max-width);
   margin: 0 auto;
+  overflow: hidden;
+  box-sizing: border-box;
 }
 
-/* Left section */
 .page_gameSection__iWi_w {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
   height: 100%;
+  width: 100%;
+  overflow: hidden;
+  box-sizing: border-box;
+  gap: var(--spacing-md);
 }
 
-/* Game area - Adjust to make room for larger chat */
+/* Game area takes 44% */
 .page_gameArea__Ib4xZ {
+  height: 44%;
   display: flex;
   flex-direction: column;
-  gap: 0.75rem;
-  height: 55%; /* Reduced from 65% to give more space to chat */
-}
-
-/* Graph container */
-.page_gameGraph__yPidU {
-  background: #1a1a1a;
-  border-radius: 6px;
-  padding: 0.75rem;
-  flex: 1 1;
-  display: flex;
-  flex-direction: column;
-  min-height: 400px; /* Set minimum height */
-}
-
-/* Graph element */
-.page_graph__oYeXs {
-  flex: 1 1;
   min-height: 0;
-  position: relative;
-  background: #1a1a1a;
-  border-radius: 6px;
-  overflow: hidden;
+  flex-shrink: 0;
+  padding: var(--spacing-md);
 }
 
-/* Chat section - Increased height */
+/* Bottom section container */
+.page_bottomSection__F7NCr {
+  height: 43%;
+  display: flex;
+  gap: var(--spacing-md);
+  padding: 0 var(--spacing-md);
+}
+
+/* Chat section takes 80% of the space */
 .page_chatSection__UXBSH {
-  background: #1a1a1a;
+  width: 80%;
   border-radius: 6px;
-  height: 43%; /* Increased from 33% to make chat box 50% larger */
-  display: flex;
-  flex-direction: column;
-}
-
-/* Right sidebar - Remains the same height as graph */
-.page_sidebar__J6ahr {
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
-  height: 100%;
-}
-
-/* Controls section */
-.page_controls__MGrPX {
-  background: #1a1a1a;
-  border-radius: 6px;
-  height: 180px;
-  display: flex;
-  align-items: center;
-  padding: 0;
   overflow: hidden;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
 }
 
-/* Bets section */
-.page_betsSection__qKjFQ {
-  background: #1a1a1a;
+/* Betting container takes middle */
+.page_bettingContainer__o9thn {
+  flex: 0.3 1;
+  background: rgba(0, 0, 0, 0.4);
   border-radius: 6px;
+  border: 1px solid rgba(18, 194, 233, 0.2);
+  box-shadow: 
+    inset 0 0 30px rgba(18, 194, 233, 0.07),
+    0 4px 24px -1px rgba(18, 194, 233, 0.15);
+  -webkit-backdrop-filter: blur(5px);
+          backdrop-filter: blur(5px);
+  padding: var(--spacing-md);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+}
+
+.page_betSection__u6005 {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+.page_betRow__1_7wS {
+  display: flex;
+  gap: var(--spacing-md);
+}
+
+.page_betInput__OOVGU {
   flex: 1 1;
   display: flex;
   flex-direction: column;
+  gap: 2px;
 }
 
-.page_multiplier__c9BrG {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 80px;
+.page_betInput__OOVGU label {
+  font-size: 0.75rem;
+  color: #666;
+  text-transform: uppercase;
 }
 
-.page_multiplierValue__re6cp {
-  font-size: 3.5rem;
-  font-weight: 700;
-}
-
-.page_previousRounds__WcrGu {
-  display: flex;
-  gap: 1rem;
-  padding-top: 1rem;
-  color: #888;
-  font-size: 0.875rem;
-}
-
-.page_betControls__9BG7T {
-  display: flex;
-  gap: 0.5rem;
-  flex: 2 1;
-}
-
-.page_inputWrapper__ApSA2 {
-  width: 100%;
-  height: 32px;
-  display: flex;
-  align-items: center;
-}
-
-.page_betInput__OOVGU, .page_cashoutInput__pZfml {
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 4px;
-  padding: 0.25rem 0.5rem;
-  color: white;
-  width: 100%;
-  height: 32px;
-  font-size: 0.875rem;
-}
-
-.page_betButton__9Z7L5 {
-  background: linear-gradient(90deg, #12c2e9, #c471ed, #f64f59);
-  border: none;
-  border-radius: 4px;
-  padding: 0 1rem;
-  height: 32px;
-  color: white;
-  font-weight: 500;
-  cursor: pointer;
-  transition: opacity 0.2s;
-}
-
-.page_betButton__9Z7L5:hover {
-  opacity: 0.9;
-}
-
-.page_autoCashout__8ZV6m {
-  flex: 1 1;
-}
-
-.page_betsHeader___xiw5 {
-  display: grid;
-  grid-template-columns: 2fr 0.5fr 1fr 1fr;
-  padding: 0.75rem 1rem;
+.page_betInput__OOVGU input {
   background: rgba(0, 0, 0, 0.3);
-  border-top-left-radius: 8px;
-  border-top-right-radius: 8px;
-  font-size: 0.875rem;
-  color: #888;
-  font-weight: 500;
-}
-
-.page_betsList__adqw0 {
-  flex: 1 1;
-  overflow-y: auto;
-}
-
-.page_betItem__8yPnT {
-  display: grid;
-  grid-template-columns: 2fr 0.5fr 1fr 1fr;
-  padding: 0.5rem 1rem;
-  font-size: 0.875rem;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-}
-
-.page_username__rtyJw {
-  color: #f64f59;
-}
-
-.page_chatMessages__XIfqw {
-  flex: 1 1;
-  overflow-y: auto;
-  padding: 1rem;
-}
-
-.page_chatInput__vr_Xh {
-  padding: 1rem;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.page_chatInput__vr_Xh input {
-  width: 100%;
-  background: rgba(255, 255, 255, 0.05);
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 4px;
-  padding: 0.5rem;
-  color: #888;
+  height: 32px;
+  padding: 0 12px;
+  color: white;
+  font-size: 0.875rem;
+  font-family: 'JetBrains Mono', monospace;
 }
 
-@media (max-width: 1400px) {
-  .page_gameContainer__gZ0MP {
-    grid-template-columns: minmax(800px, 2fr) 437.5px;
-  }
+.page_placeBetButton__8cYAX {
+  background: linear-gradient(
+    to right bottom,
+    rgba(18, 194, 233, 0.15),
+    rgba(18, 194, 233, 0.05)
+  );
+  border: 1px solid rgba(18, 194, 233, 0.2);
+  border-radius: 4px;
+  padding: 0;
+  color: white;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  -webkit-backdrop-filter: blur(5px);
+          backdrop-filter: blur(5px);
+  transition: all 0.2s;
+  cursor: pointer;
+  margin: var(--spacing-xs) 0;
+  height: 36px;
 }
 
-@media (max-width: 1024px) {
-  .page_gameContainer__gZ0MP {
-    grid-template-columns: 1fr;
-  }
-  
-  .page_gameArea__Ib4xZ {
-    height: auto;
-  }
-
-  .page_gameGraph__yPidU {
-    height: 250px;
-  }
-  
-  .page_controls__MGrPX {
-    min-height: 60px;
-  }
-  
-  .page_chatSection__UXBSH {
-    height: 400px;
-  }
-} 
-/*!***************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** css ../../node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[5].use[2]!../../node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[5].use[3]!./src/components/Chat/Chat.module.css ***!
-  \***************************************************************************************************************************************************************************************************************************************************************************************/
-.Chat_container___OOUH {
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-  background: #1a1a1a;
-  border-radius: 8px;
+.page_placeBetButton__8cYAX:hover {
+  background: linear-gradient(
+    to right bottom,
+    rgba(18, 194, 233, 0.25),
+    rgba(18, 194, 233, 0.15)
+  );
 }
 
-.Chat_header__Sjau4 {
+.page_fairnessSection__wSAEd {
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  margin-top: var(--spacing-sm);
+  padding-top: var(--spacing-sm);
+}
+
+.page_fairnessHeader__DSwgi {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0.75rem 1rem;
-  background: rgba(0, 0, 0, 0.3);
-  border-top-left-radius: 8px;
-  border-top-right-radius: 8px;
+  margin-bottom: var(--spacing-xs);
+  color: #666;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
 }
 
-.Chat_controls__SCcgE {
-  display: flex;
-  gap: 0.5rem;
-}
-
-.Chat_channelButton__5Z6w_ {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  background: rgba(255, 255, 255, 0.1);
-  border: none;
-  color: #fff;
-  padding: 0.25rem 0.5rem;
-  border-radius: 4px;
-  font-size: 0.875rem;
-  cursor: pointer;
-}
-
-.Chat_flag__LwDFS {
+.page_helpIcon__NTfPb {
   width: 16px;
   height: 16px;
-  border-radius: 2px;
-}
-
-.Chat_leaveButton__xEBP4 {
-  background: rgba(255, 255, 255, 0.1);
-  border: none;
-  color: #f64f59;
-  padding: 0.25rem 0.5rem;
-  border-radius: 4px;
-  font-size: 0.875rem;
-  cursor: pointer;
-}
-
-.Chat_messages__jNsyi {
-  flex: 1 1;
-  overflow-y: auto;
-  padding: 1rem;
-}
-
-.Chat_inputArea__4I35U {
-  position: relative;
-  padding: 1rem;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.Chat_input__EP4fd {
-  width: 100%;
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 4px;
-  padding: 0.75rem 1rem;
-  color: white;
-  font-size: 0.875rem;
-}
-
-.Chat_input__EP4fd::placeholder {
-  color: #666;
-}
-
-.Chat_charCount__OegqK {
-  position: absolute;
-  right: 1.5rem;
-  bottom: 1.5rem;
-  font-size: 0.75rem;
-  color: #666;
-  pointer-events: none;
-}
-
-.Chat_inputWrapper__vojXN {
-  position: relative;
+  border-radius: 50%;
+  background: rgba(18, 194, 233, 0.1);
+  border: 1px solid rgba(18, 194, 233, 0.2);
   display: flex;
   align-items: center;
-  gap: 0.5rem;
-}
-
-.Chat_emojiButton__xz1ZO {
-  background: none;
-  border: none;
-  font-size: 1.25rem;
-  cursor: pointer;
-  padding: 0.25rem;
-  transition: transform 0.2s;
-}
-
-.Chat_emojiButton__xz1ZO:hover {
-  transform: scale(1.1);
-}
-
-.Chat_emojiPicker__ZSi6G {
-  position: absolute;
-  bottom: 100%;
-  left: 0;
-  margin-bottom: 0.5rem;
-  animation: Chat_slideUp__JKb0T 0.2s ease;
-}
-
-@keyframes Chat_slideUp__JKb0T {
-  from {
-    opacity: 0;
-    transform: translateY(10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.Chat_categories__qZetE {
-  display: flex;
-  gap: 0.5rem;
-  padding: 0.5rem 1rem;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.Chat_category__lidPK {
-  padding: 0.25rem 0.75rem;
-  border-radius: 4px;
-  font-size: 0.75rem;
-  color: #888;
-  cursor: pointer;
-  transition: all 0.2s;
-}
-
-.Chat_category__lidPK.Chat_active__8Wteo {
-  background: rgba(255, 255, 255, 0.1);
-  color: white;
-} 
-/*!**********************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** css ../../node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[5].use[2]!../../node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[5].use[3]!./src/components/Chat/ChatMessage.module.css ***!
-  \**********************************************************************************************************************************************************************************************************************************************************************************************/
-.ChatMessage_message__4FUkA {
-  padding: 0.5rem 0;
-  font-size: 0.875rem;
-  line-height: 1.4;
-  word-break: break-word;
-  animation: ChatMessage_fadeIn__qHqv4 0.3s ease;
-}
-
-.ChatMessage_timestamp__4BAIh {
-  color: #666;
-  font-size: 0.75rem;
-  margin-right: 0.5rem;
-}
-
-.ChatMessage_userInfo__wTrc7 {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  margin-right: 0.5rem;
-}
-
-.ChatMessage_username__r7_Cq {
-  color: var(--user-color);
-  font-weight: 500;
-}
-
-.ChatMessage_text__JYq6b {
-  color: #fff;
-}
-
-.ChatMessage_badge__bFDyQ {
-  padding: 0.125rem 0.375rem;
-  border-radius: 3px;
-  font-size: 0.625rem;
-  font-weight: 700;
-  letter-spacing: 0.5px;
-}
-
-.ChatMessage_admin__YHS6R {
-  background: #f64f59;
-  color: white;
-}
-
-.ChatMessage_mod__dTzvx {
-  background: #c471ed;
-  color: white;
-}
-
-.ChatMessage_vip__G6_Jl {
-  background: #12c2e9;
-  color: white;
-}
-
-.ChatMessage_system__2udkQ {
-  color: #888;
-  font-style: italic;
-}
-
-.ChatMessage_system__2udkQ .ChatMessage_username__r7_Cq {
-  color: #888;
-}
-
-@keyframes ChatMessage_fadeIn__qHqv4 {
-  from {
-    opacity: 0;
-    transform: translateY(10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.ChatMessage_messageGroup__w5ITC {
-  padding: 0.25rem 0;
-}
-
-.ChatMessage_messageGroup__w5ITC .ChatMessage_message__4FUkA + .ChatMessage_message__4FUkA {
-  margin-top: 2px;
-  padding-top: 2px;
-}
-
-.ChatMessage_messageGroup__w5ITC .ChatMessage_timestamp__4BAIh {
-  opacity: 0;
-}
-
-.ChatMessage_messageGroup__w5ITC .ChatMessage_message__4FUkA:first-child .ChatMessage_timestamp__4BAIh {
-  opacity: 1;
-} 
-/*!***********************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** css ../../node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[5].use[2]!../../node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[5].use[3]!./src/components/Game/GameControls.module.css ***!
-  \***********************************************************************************************************************************************************************************************************************************************************************************************/
-.GameControls_container__yWDv8 {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
   justify-content: center;
-  padding: 0.375rem 0.5rem;
-  background: rgba(0, 0, 0, 0.2);
+  font-size: 0.75rem;
+  color: var(--primary);
+  cursor: help;
 }
 
-.GameControls_inputs__v__lU {
-  display: grid;
-  grid-template-columns: 1.5fr 1fr;
-  grid-gap: 0.75rem;
-  gap: 0.75rem;
-  width: 100%;
-}
-
-.GameControls_inputGroup__xzrhg {
+.page_fairnessInputs__QBimp {
   display: flex;
   flex-direction: column;
-  gap: 0;
+  gap: var(--spacing-xs);
 }
 
-.GameControls_inputGroup__xzrhg label {
-  font-size: 0.6875rem;
-  color: #888;
-  font-weight: 500;
-  margin-bottom: 1px;
-  line-height: 1;
+.page_fairnessInput__A7ECA {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.page_fairnessInput__A7ECA label {
+  font-size: 0.75rem;
+  color: #666;
   text-transform: uppercase;
-  letter-spacing: 0.5px;
 }
 
-.GameControls_inputWrapper__iLwnV {
-  position: relative;
-  height: 20px;
-}
-
-.GameControls_input__JXkVv {
-  width: 100%;
-  height: 20px;
-  background: rgba(255, 255, 255, 0.03);
+.page_fairnessInput__A7ECA input {
+  background: rgba(0, 0, 0, 0.3);
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 4px;
-  padding: 0 2.75rem 0 0.5rem;
+  height: 28px;
+  padding: 0 10px;
   color: white;
-  font-size: 0.8125rem;
+  font-size: 0.75rem;
   font-family: 'JetBrains Mono', monospace;
-  line-height: 18px;
-  transition: border-color 0.2s;
 }
 
-.GameControls_input__JXkVv:focus {
-  outline: none;
-  border-color: rgba(255, 255, 255, 0.2);
-}
-
-.GameControls_inputControls__832r9 {
-  position: absolute;
-  right: 2.75rem;
-  top: 50%;
-  transform: translateY(-50%);
-  display: flex;
-  gap: 0.25rem;
-}
-
-.GameControls_halfButton__Gnnm0, .GameControls_doubleButton__oU5tW {
-  padding: 0.125rem 0.25rem;
-  background: rgba(255, 255, 255, 0.05);
-  border: none;
-  color: #888;
-  border-radius: 2px;
-  font-size: 0.625rem;
-  line-height: 1;
-  transition: all 0.2s;
-  cursor: pointer;
-}
-
-.GameControls_halfButton__Gnnm0:hover, .GameControls_doubleButton__oU5tW:hover {
-  background: rgba(255, 255, 255, 0.1);
-  color: white;
-}
-
-.GameControls_currency__tP7GB, .GameControls_multiplier__n02q9 {
-  position: absolute;
-  right: 0.625rem;
-  top: 50%;
-  transform: translateY(-50%);
+.page_fairnessInput__A7ECA input[readonly] {
   color: #666;
-  font-size: 0.6875rem;
-  font-weight: 500;
+  cursor: default;
 }
 
-.GameControls_betButton__QzsVJ {
-  width: 100%;
-  padding: 0.75rem;
+.page_gameContainer__gZ0MP {
+  flex: 0.7 1; /* Takes up 70% of the space */
+  position: relative;
+  background: rgba(0, 0, 0, 0.4);
   border-radius: 6px;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  transition: all 0.2s;
-  background: linear-gradient(to right, #00c4ff, #6d00ff);
-}
-
-.GameControls_betButton__QzsVJ:disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
-}
-
-.GameControls_cashoutButton__iqSr9 {
-  background: linear-gradient(to right, #ff3366, #ff6b3d);
-  animation: GameControls_pulse__YY3U2 1s infinite;
-}
-
-@keyframes GameControls_pulse__YY3U2 {
-  0% {
-    transform: scale(1);
-  }
-  50% {
-    transform: scale(1.02);
-  }
-  100% {
-    transform: scale(1);
-  }
-} 
-/*!****************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** css ../../node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[5].use[2]!../../node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[5].use[3]!./src/components/Game/Graph.module.css ***!
-  \****************************************************************************************************************************************************************************************************************************************************************************************/
-.Graph_viewport__y_KnW {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
   overflow: hidden;
-  background: #1a1a1a;
-  border-radius: 4px;
+  min-height: 0;
+  border: 1px solid rgba(18, 194, 233, 0.2);
+  box-shadow: 
+    inset 0 0 30px rgba(18, 194, 233, 0.07),
+    0 4px 24px -1px rgba(18, 194, 233, 0.15);
+  -webkit-backdrop-filter: blur(5px);
+          backdrop-filter: blur(5px);
 }
 
-/* Make grid lines cover the full container */
-.Graph_gridLines__NWa_0 {
+/* Update the grid lines to be more visible against new background */
+.page_gridLines__zdhs2 {
   position: absolute;
   inset: 0;
   background-image: 
-    linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
-  background-size: 40px 40px; /* Increased grid size */
+    linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+  background-size: 40px 40px;
   pointer-events: none;
   z-index: 1;
 }
 
-.Graph_canvas__bNEHu {
+/* Controls/Bet amount takes 13% */
+.page_controlsSection__wYCwt {
+  height: 13%;
+  min-height: 34px;
+  display: flex;
+  background: rgba(0, 0, 0, 0.4);
+  border-radius: 6px;
+  padding: var(--spacing-md);
+  flex-shrink: 0;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1200px) {
+  .page_main__GlU4n {
+    height: auto;
+    min-height: calc(100vh - var(--header-height));
+  }
+  
+  .page_gameArea__Ib4xZ {
+    height: 44vh;
+  }
+  
+  .page_controlsSection__wYCwt {
+    height: 13vh;
+  }
+  
+  .page_chatSection__UXBSH {
+    height: 43vh;
+  }
+} 
+
+/* Add these new styles */
+.page_rightSection__VCwMG {
+  width: 400px;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+} 
+
+.page_leftSection__Mysyt {
+  flex: 1 1;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+} 
+
+/* Update Leaderboard styles in Leaderboard.module.css */
+.page_container__aoG4z {
+  width: 300px;
+  background: rgba(0, 0, 0, 0.4);
+  border-radius: 6px;
+  border: 1px solid rgba(18, 194, 233, 0.2);
+  box-shadow: 
+    inset 0 0 30px rgba(18, 194, 233, 0.07),
+    0 4px 24px -1px rgba(18, 194, 233, 0.15);
+  -webkit-backdrop-filter: blur(5px);
+          backdrop-filter: blur(5px);
+  padding: var(--spacing-md);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+} 
+
+.page_gameWrapper__EGAco {
+  display: flex;
+  gap: var(--spacing-md);
+  flex: 1 1;
+  min-height: 0;
+} 
+
+/* Hash verifier styles */
+.page_hashVerifier__N0I40 {
+  background: rgba(0, 0, 0, 0.4);
+  border-radius: 6px;
+  padding: var(--spacing-md);
+  border: 1px solid rgba(18, 194, 233, 0.2);
+}
+
+.page_hashHeader__lSvMl {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--spacing-sm);
+}
+
+.page_hashHeader__lSvMl h3 {
+  font-size: 0.75rem;
+  color: #666;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.page_helpIcon__NTfPb {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: rgba(18, 194, 233, 0.1);
+  border: 1px solid rgba(18, 194, 233, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  color: var(--primary);
+  cursor: help;
+}
+
+.page_hashInputs__ij_V9 {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+}
+
+.page_hashInput__uonmy {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.page_hashInput__uonmy label {
+  font-size: 0.75rem;
+  color: #666;
+  text-transform: uppercase;
+}
+
+.page_hashInput__uonmy input {
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+  height: 32px;
+  padding: 0 12px;
+  color: white;
+  font-size: 0.75rem;
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.page_hashInput__uonmy input[readonly] {
+  color: #666;
+  cursor: default;
+} 
+/*!*********************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ../../node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[5].use[2]!../../node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[5].use[3]!./src/components/Game/CrashGraph.module.css ***!
+  \*********************************************************************************************************************************************************************************************************************************************************************************************/
+.CrashGraph_graphContainer__MBczb {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4);
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.CrashGraph_gridLines__lgjJW {
+  position: absolute;
+  inset: 0;
+  background-image: 
+    linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+  background-size: 40px 40px;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.CrashGraph_canvas__L_jp3 {
   position: absolute;
   inset: 0;
   width: 100%;
@@ -636,26 +392,7 @@
   z-index: 2;
 }
 
-/* Crash line styling */
-.Graph_crashLine__ikUV_ {
-  filter: drop-shadow(0 0 8px rgba(18, 194, 233, 0.4));
-  z-index: 2;
-}
-
-/* UI Overlay layer */
-.Graph_overlay__6SZo_ {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  padding: 1rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  z-index: 3;
-}
-
-/* Game status overlay - centered multiplier */
-.Graph_gameStatus__21mgw {
+.CrashGraph_multiplier__wBkVC {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -664,156 +401,295 @@
   font-weight: 700;
   font-family: 'JetBrains Mono', monospace;
   color: #12c2e9;
-  text-shadow: 0 0 20px rgba(18, 194, 233, 0.3);
-  z-index: 4;
-}
-
-/* Bottom info bar */
-.Graph_infoBar__5E_47 {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  display: flex;
-  justify-content: space-between;
-  padding: 0.75rem;
-  background: linear-gradient(transparent, rgba(0, 0, 0, 0.3));
+  text-shadow: 0 0 20px rgba(18, 194, 233, 0.5);
   z-index: 3;
+  transition: color 0.3s ease;
 }
 
-.Graph_fairnessHash___c1Dj {
-  color: rgba(255, 255, 255, 0.5);
-  font-size: 0.75rem;
-  font-family: 'JetBrains Mono', monospace;
-  background: rgba(0, 0, 0, 0.3);
-  padding: 0.25rem 0.5rem;
-  border-radius: 4px;
-  align-self: flex-start;
+.CrashGraph_graphContainer__MBczb[data-phase='crashed'] .CrashGraph_multiplier__wBkVC {
+  color: #f64f59;
+  animation: CrashGraph_shake__a3fps 0.5s;
 }
 
-.Graph_markers__opWNj {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
-  gap: 1rem;
-}
-
-.Graph_timeMarker__Z1Yri, .Graph_multiplierMarker__QGgc4 {
-  color: rgba(255, 255, 255, 0.7);
-  font-size: 0.875rem;
-  font-family: 'JetBrains Mono', monospace;
-  background: rgba(0, 0, 0, 0.3);
-  padding: 0.25rem 0.5rem;
-  border-radius: 4px;
-}
-
-/* Scale markers */
-.Graph_scaleMarkers__raALY {
-  position: absolute;
-  left: 0;
-  top: 0;
-  bottom: 0;
-  width: 50px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  padding: 1rem 0;
-  pointer-events: none;
-  z-index: 2;
-}
-
-.Graph_scaleMarker__7YlZv {
-  color: rgba(255, 255, 255, 0.5);
-  font-size: 0.75rem;
-  font-family: 'JetBrains Mono', monospace;
-  padding: 0.125rem 0.25rem;
-}
-
-/* Animation for crash effect */
-@keyframes Graph_crash__U8Cts {
-  0% { transform: scale(1); filter: brightness(1); }
-  50% { transform: scale(1.5); filter: brightness(1.5); }
-  100% { transform: scale(1); filter: brightness(1); }
-}
-
-.Graph_crashed__SHnZE .Graph_canvas__bNEHu {
-  animation: Graph_crash__U8Cts 0.3s ease-out;
-}
-
-/* Hover effects for interactive elements */
-.Graph_hoverInfo__deW4v {
-  position: absolute;
-  background: rgba(0, 0, 0, 0.8);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 4px;
-  padding: 0.5rem;
-  color: white;
-  font-size: 0.75rem;
-  pointer-events: none;
-  z-index: 4;
-  transform: translate(-50%, -100%);
-  margin-top: -8px;
-}
-
-@keyframes Graph_rocketTrail__jIHiT {
-  0% { opacity: 0.8; }
-  100% { opacity: 0; }
-}
-
-.Graph_rocketTrail__jIHiT {
-  position: absolute;
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(18, 194, 233, 0.4) 0%, transparent 70%);
-  animation: Graph_rocketTrail__jIHiT 0.5s ease-out forwards;
+@keyframes CrashGraph_shake__a3fps {
+  0%, 100% { transform: translate(-50%, -50%); }
+  25% { transform: translate(-52%, -48%); }
+  75% { transform: translate(-48%, -52%); }
 } 
-/*!*******************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** css ../../node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[5].use[2]!../../node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[5].use[3]!./src/components/Game/LiveBets.module.css ***!
-  \*******************************************************************************************************************************************************************************************************************************************************************************************/
-.LiveBets_container__nxHOa {
+/*!*************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ../../node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[5].use[2]!../../node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[5].use[3]!./src/components/Game/PreviousRounds.module.css ***!
+  \*************************************************************************************************************************************************************************************************************************************************************************************************/
+.PreviousRounds_container__5opCI {
+  display: flex;
+  gap: 4px;
+  padding: 8px;
+  border-radius: 4px;
+}
+
+.PreviousRounds_rounds__ewK4o {
+  display: flex;
+  gap: 4px;
+}
+
+.PreviousRounds_round__X4uIn {
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 500;
+}
+
+.PreviousRounds_high__y9RLa {
+  background: rgba(18, 194, 233, 0.2);
+  color: #12c2e9;
+}
+
+.PreviousRounds_low__2V9PR {
+  background: rgba(246, 79, 89, 0.2);
+  color: #f64f59;
+} 
+/*!***************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ../../node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[5].use[2]!../../node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[5].use[3]!./src/components/Chat/Chat.module.css ***!
+  \***************************************************************************************************************************************************************************************************************************************************************************************/
+.Chat_chatContainer__XAHwO {
   display: flex;
   flex-direction: column;
   height: 100%;
-}
-
-.LiveBets_header__TrfzJ {
-  display: grid;
-  grid-template-columns: 2fr 0.5fr 1fr 1fr;
-  padding: 0.75rem 1rem;
-  background: rgba(0, 0, 0, 0.3);
-  border-top-left-radius: 8px;
-  border-top-right-radius: 8px;
-  font-size: 0.875rem;
-  color: #888;
-  font-weight: 500;
-}
-
-.LiveBets_betsList__PiVIj {
+  background: rgba(0, 0, 0, 0.4);
+  border-radius: 6px;
+  overflow: hidden;
+  border: 1px solid rgba(18, 194, 233, 0.2);
+  box-shadow: 
+    inset 0 0 30px rgba(18, 194, 233, 0.07),
+    0 4px 24px -1px rgba(18, 194, 233, 0.15);
+  -webkit-backdrop-filter: blur(5px);
+          backdrop-filter: blur(5px);
+  position: relative;
+  z-index: 1;
   flex: 1 1;
-  overflow-y: auto;
 }
 
-.LiveBets_betItem__vQZ1m {
-  display: grid;
-  grid-template-columns: 2fr 0.5fr 1fr 1fr;
-  padding: 0.75rem 1rem;
+.Chat_header__Sjau4 {
+  padding: 0 var(--spacing-md);
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: rgba(0, 0, 0, 0.3);
   border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 }
 
-.LiveBets_username__pOI4w {
-  color: #12c2e9;
+.Chat_headerLeft___WkS7 {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+}
+
+.Chat_header__Sjau4 h3 {
+  color: #888;
+  font-size: 0.75rem;
+  font-weight: 500;
+  text-transform: uppercase;
+}
+
+.Chat_onlineUsers__aPELP {
+  color: #666;
+  font-size: 0.75rem;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.Chat_messageArea__1tKEA {
+  flex: 1 1;
+  overflow-y: auto;
+  padding: var(--spacing-xs);
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-height: 0;
+}
+
+.Chat_message__24kNj {
+  padding: 4px 8px;
+  font-size: 0.875rem;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+
+.Chat_username__PttqR {
+  color: var(--primary);
   font-weight: 500;
 }
 
-.LiveBets_cashout__3B9ro {
-  color: #c471ed;
+.Chat_timestamp__uIrD_ {
+  color: #666;
+  font-size: 0.75rem;
 }
 
-.LiveBets_amount__QxCsR {
-  color: #fff;
+.Chat_content__KYJ4e {
+  width: 100%;
+  color: rgba(255, 255, 255, 0.9);
 }
 
-.LiveBets_profit__5eSjr {
+.Chat_badge__kzvGS {
+  padding: 2px 6px;
+  border-radius: 3px;
+  font-size: 0.625rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.Chat_vip__mhG0Q {
+  background: var(--primary);
+  color: white;
+}
+
+.Chat_mod__6dRWe {
+  background: var(--secondary);
+  color: white;
+}
+
+.Chat_winMessage__sNqXx {
+  background: rgba(18, 194, 233, 0.05);
+}
+
+.Chat_crashMessage__k7aZ1 {
+  background: rgba(246, 79, 89, 0.05);
+  text-align: center;
+  color: var(--accent);
+}
+
+.Chat_betInfo__oPs4g {
+  color: var(--primary);
+  font-size: 0.75rem;
+  margin-left: var(--spacing-sm);
+}
+
+.Chat_systemMessage__IenZc {
+  padding: 4px 8px;
+  color: #888;
+  text-align: center;
+  font-size: 0.875rem;
+}
+
+.Chat_inputArea__4I35U {
+  padding: 8px;
+  background: rgba(0, 0, 0, 0.3);
+  display: flex;
+  gap: 8px;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  margin-bottom: 1px;
+}
+
+.Chat_input__EP4fd {
+  flex: 1 1;
+  height: 32px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+  padding: 0 12px;
+  color: white;
+  font-size: 0.875rem;
+}
+
+.Chat_input__EP4fd:focus {
+  outline: none;
+  border-color: var(--primary);
+}
+
+.Chat_sendButton__P2RF9 {
+  width: 32px;
+  height: 32px;
+  background: var(--primary);
+  border: none;
+  border-radius: 4px;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+.Chat_sendButton__P2RF9:hover {
+  opacity: 0.9;
+}
+
+.Chat_sendButton__P2RF9:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+} 
+/*!**********************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ../../node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[5].use[2]!../../node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[5].use[3]!./src/components/Game/Leaderboard.module.css ***!
+  \**********************************************************************************************************************************************************************************************************************************************************************************************/
+.Leaderboard_container__07Z41 {
+  background: rgba(0, 0, 0, 0.4);
+  border-radius: 6px;
+  border: 1px solid rgba(18, 194, 233, 0.2);
+  box-shadow: 
+    inset 0 0 30px rgba(18, 194, 233, 0.07),
+    0 4px 24px -1px rgba(18, 194, 233, 0.15);
+  -webkit-backdrop-filter: blur(5px);
+          backdrop-filter: blur(5px);
+  padding: var(--spacing-md);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+  flex: 1 1;
+}
+
+.Leaderboard_header__Zmfx9 {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: var(--spacing-sm);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.Leaderboard_header__Zmfx9 h3 {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #888;
+  text-transform: uppercase;
+}
+
+.Leaderboard_timeframe__OfvLw {
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+  color: white;
+  padding: 2px 6px;
+  font-size: 0.75rem;
+}
+
+.Leaderboard_playersList__Yj3C_ {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+  overflow-y: auto;
+}
+
+.Leaderboard_playerRow__iZ0WJ {
+  display: flex;
+  align-items: center;
+  padding: 4px 0;
+  font-size: 0.875rem;
+}
+
+.Leaderboard_rank__gDW_o {
+  width: 32px;
+  color: #888;
+}
+
+.Leaderboard_username__4xTso {
+  flex: 1 1;
+  color: var(--primary);
+}
+
+.Leaderboard_profit__ADz8o {
   color: #4CAF50;
+  font-family: 'JetBrains Mono', monospace;
 } 

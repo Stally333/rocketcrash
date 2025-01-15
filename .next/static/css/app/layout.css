@@ -2,25 +2,47 @@
   !*** css ../../node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[10].use[2]!../../node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[10].use[3]!./src/app/globals.css ***!
   \*************************************************************************************************************************************************************************************************************************************************************************/
 :root {
-  --primary-gradient: linear-gradient(90deg, #12c2e9, #c471ed, #f64f59);
+  --background: #0a0a0a;
+  --text: #ffffff;
+  --primary: #12c2e9;
+  --secondary: #c471ed;
+  --accent: #f64f59;
+  
+  /* Spacing system */
+  --spacing-xs: 0.25rem;
+  --spacing-sm: 0.5rem;
+  --spacing-md: 1rem;
+  --spacing-lg: 1.5rem;
+  --spacing-xl: 2rem;
+  
+  /* Layout */
+  --header-height: 56px;
+  --container-max-width: 1440px;
+  --side-panel-width: 320px;
 }
 
-* {
+html, body {
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
+  height: 100%;
+  overflow: hidden;
 }
 
 body {
-  background: #0a0a0a;
-  color: #ffffff;
+  background: var(--background);
+  color: var(--text);
   min-height: 100vh;
+  /* Remove these if causing issues */
+  --safe-area-inset-top: env(safe-area-inset-top, 0px);
+  --safe-area-inset-bottom: env(safe-area-inset-bottom, 0px);
 }
 
-::selection {
-  background: #c471ed;
-  color: white;
-} 
+#__next {
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* Add any additional global styles */ 
 /*!*******************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** css ../../node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[5].use[2]!../../node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[5].use[3]!./src/components/Header/Header.module.css ***!
   \*******************************************************************************************************************************************************************************************************************************************************************************************/
@@ -34,12 +56,19 @@ body {
 }
 
 .Header_container__3JNoS {
-  max-width: 1200px;
+  max-width: 1440px;
   margin: 0 auto;
-  padding: 0.75rem 2rem;
+  padding: 0 1rem;
+  height: 56px;
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+.Header_leftSection__4hV2o {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
 }
 
 .Header_logo__1FRrW {
@@ -66,9 +95,37 @@ body {
   letter-spacing: -0.5px;
 }
 
+.Header_stats__KzDal {
+  display: flex;
+  gap: 1.5rem;
+  padding-left: 2rem;
+  border-left: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.Header_statItem__QtMLS {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.Header_label__EI9Oz {
+  font-size: 0.6875rem;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.Header_value__igFBx {
+  font-size: 0.875rem;
+  color: #12c2e9;
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 500;
+}
+
 .Header_nav__LVYU2 {
   display: flex;
   gap: 2rem;
+  align-items: center;
 }
 
 .Header_navLink__bX76H {
@@ -78,13 +135,20 @@ body {
   font-size: 0.875rem;
   letter-spacing: 0.5px;
   transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  height: 32px;
 }
 
 .Header_navLink__bX76H:hover {
   color: #fff;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
+  .Header_stats__KzDal {
+    display: none;
+  }
+  
   .Header_container__3JNoS {
     padding: 0.75rem 1rem;
   }
@@ -92,10 +156,34 @@ body {
   .Header_nav__LVYU2 {
     gap: 1rem;
   }
-  
-  .Header_logoText__Q2TRx {
-    font-size: 1.1rem;
-  }
+} 
+/*!**************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ../../node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[5].use[2]!../../node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[5].use[3]!./src/components/Game/SoundController.module.css ***!
+  \**************************************************************************************************************************************************************************************************************************************************************************************************/
+.SoundController_button__JlZaZ {
+  background: linear-gradient(90deg, #12c2e9, #c471ed, #f64f59);
+  border: none;
+  border-radius: 4px;
+  padding: 0.5rem;
+  color: #fff;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+}
+
+.SoundController_button__JlZaZ:hover {
+  opacity: 0.9;
+}
+
+.SoundController_button__JlZaZ svg {
+  width: 16px;
+  height: 16px;
+  position: relative;
+  top: 1px;
 } 
 /*!****************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** css ../../node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[2].use[1]!../../node_modules/next/dist/build/webpack/loaders/next-font-loader/index.js??ruleSet[1].rules[13].oneOf[2].use[2]!../../node_modules/next/font/google/target.css?{"path":"src/app/layout.tsx","import":"Poppins","arguments":[{"weight":["400","500","600","700"],"subsets":["latin"],"display":"swap"}],"variableName":"poppins"} ***!

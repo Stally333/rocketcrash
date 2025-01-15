@@ -1,85 +1,55 @@
 'use client'
 
-import React, { createContext, useContext, useEffect, useRef, useState } from 'react'
+import React, { createContext, useContext, useRef, useState, useEffect } from 'react'
 import { CrashGame } from '@/game/CrashGame'
-import { GameState, GameContextType, GraphRef } from '@/types/game'
+
+interface GameContextType {
+  phase: 'waiting' | 'starting' | 'in-progress' | 'crashed'
+  multiplier: number
+  hash: string
+  previousGames: GameHistory[]
+  startGame: () => void
+  placeBet: (amount: number, autoCashout?: number) => void
+  cashout: () => void
+  bets: Bet[]
+}
 
 const GameContext = createContext<GameContextType | null>(null)
 
 export const GameProvider = ({ children }: { children: React.ReactNode }) => {
-  const gameInstanceRef = useRef<CrashGame | null>(null)
-  const graphRef = useRef<GraphRef | null>(null)
-  const [gameState, setGameState] = useState<GameState>(() => {
-    if (!gameInstanceRef.current) {
-      gameInstanceRef.current = new CrashGame()
-    }
-    return gameInstanceRef.current.getState()
+  const [gameState, setGameState] = useState({
+    phase: 'waiting',
+    multiplier: 1.00,
+    hash: '',
+    previousGames: []
   })
-  const [bets, setBets] = useState<Array<{
-    id: number
-    username: string
-    amount: number
-    autoCashout?: number
-    cashedOut?: boolean
-    profit?: number
-  }>>([])
+  const [bets, setBets] = useState<Bet[]>([])
+  const gameInstanceRef = useRef<CrashGame | null>(null)
 
   useEffect(() => {
-    const game = gameInstanceRef.current
-    if (!game) return
-
-    game.subscribe({
+    gameInstanceRef.current = new CrashGame()
+    gameInstanceRef.current.setCallbacks({
       onUpdate: (state) => {
-        setGameState(state)
-        
-        // Handle auto-cashouts
-        if (state.phase === 'in-progress') {
-          bets.forEach(bet => {
-            if (bet.autoCashout && !bet.cashedOut && state.multiplier >= bet.autoCashout) {
-              setBets(current =>
-                current.map(b => {
-                  if (b.id === bet.id) {
-                    return {
-                      ...b,
-                      cashedOut: true,
-                      profit: b.amount * (state.multiplier - 1)
-                    }
-                  }
-                  return b
-                })
-              )
-            }
-          })
-        }
+        setGameState({
+          phase: state.phase,
+          multiplier: state.multiplier,
+          hash: state.hash,
+          previousGames: state.previousGames
+        })
       },
       onCrash: (crashPoint) => {
-        // Handle bets resolution
-        setBets(currentBets => 
-          currentBets.map(bet => {
-            if (bet.cashedOut) return bet
-            return {
-              ...bet,
-              cashedOut: false,
-              profit: -bet.amount
-            }
-          })
-        )
-      },
-      onStarting: () => {
-        // Reset bets when new game starts
-        setBets([])
+        // Handle crash
       }
     })
 
     return () => {
-      game.cleanup()
+      // Cleanup
     }
-  }, [bets]) // Add bets to dependency array
+  }, [])
 
   const placeBet = (amount: number, autoCashout?: number) => {
     if (gameState.phase !== 'waiting') return
     
-    // Add the bet
     setBets(current => [...current, {
       id: Date.now(),
       username: 'You',
@@ -88,9 +58,9 @@ export const GameProvider = ({ children }: { children: React.ReactNode }) => {
       cashedOut: false
     }])
 
-    // Start the game if this is the first bet
-    if (gameInstanceRef.current && bets.length === 0) {
-      gameInstanceRef.current.startGame()
+    // Start game if first bet
+    if (bets.length === 0) {
+      gameInstanceRef.current?.startGame()
     }
   }
 
@@ -113,17 +83,10 @@ export const GameProvider = ({ children }: { children: React.ReactNode }) => {
 
   return (
     <GameContext.Provider value={{
-      phase: gameState.phase,
-      multiplier: gameState.multiplier,
-      hash: gameState.hash,
-      previousGames: gameState.previousGames,
-      startGame: () => {
-        gameInstanceRef.current?.startGame()
-        graphRef.current?.startGame()
-      },
+      ...gameState,
+      startGame: () => gameInstanceRef.current?.startGame(),
       placeBet,
       cashout,
-      graphRef,
       bets
     }}>
       {children}
@@ -133,6 +96,21 @@ export const GameProvider = ({ children }: { children: React.ReactNode }) => {
 
 export const useGame = () => {
   const context = useContext(GameContext)
-  if (!context) throw new Error('useGame must be used within a GameProvider')
+  if (!context) throw new Error('useGame must be used within GameProvider')
   return context
+}
+
+interface Bet {
+  id: number
+  username: string
+  amount: number
+  autoCashout?: number
+  cashedOut: boolean
+  profit?: number
+}
+
+interface GameHistory {
+  crashPoint: number
+  hash: string
+  seed: string
 } 
